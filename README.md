@@ -6,6 +6,13 @@ Este é um projeto completo de Ciência de Dados que explora o dataset de faixas
 
 O grande diferencial deste projeto está no seu **Roteiro Analítico**, que compara duas abordagens preditivas distintas utilizando o algoritmo **Random Forest Regressor**: uma focada no sucesso comercial (fatores mercadológicos/externos) e outra focada na estrutura da música (fatores musicais/intrínsecos).
 
+## 🧰 Tecnologias Utilizadas
+
+	•	Linguagem Principal: Python 3
+	•	Manipulação de Dados: Pandas, Numpy
+	•	Machine Learning: Scikit-Learn (Random Forest Regressor, StandardScaler, Train-Test Split)
+	•	Visualização de Dados: Matplotlib, Seaborn
+
 ---
 
 ## 🧠 O Roteiro Analítico & Descobertas (Storytelling)
