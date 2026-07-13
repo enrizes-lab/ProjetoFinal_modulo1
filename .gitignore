@@ -1,0 +1,33 @@
+# --- Python (Arquivos temporários e Cache) ---
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# --- Jupyter Notebooks (Arquivos de checkpoint automáticos) ---
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# --- Ambientes Virtuais (Se você usar venv ou conda) ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Sistema Operacional (Arquivos ocultos do Mac e Windows) ---
+.DS_Store
+Thumbs.db
+
+# --- Dados e Segurança (MUITO IMPORTANTE) ---
+# Ignorar arquivos de dados pesados para não estourar o limite do GitHub
+data/raw/*.csv
+data/processed/*.csv
+data/final/*.csv
+
+# Se quiser ignorar TODOS os arquivos dentro da pasta data de uma vez:
+# data/
+
+# --- Modelos e Métricas Salvas ---
+# Evita enviar arquivos binários pesados de modelos treinados (como .pkl)
+models/
+*.pkl
