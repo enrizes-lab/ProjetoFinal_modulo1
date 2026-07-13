@@ -24,10 +24,5 @@ data/raw/*.csv
 data/processed/*.csv
 data/final/*.csv
 
-# Se quiser ignorar TODOS os arquivos dentro da pasta data de uma vez:
-# data/
 
-# --- Modelos e Métricas Salvas ---
-# Evita enviar arquivos binários pesados de modelos treinados (como .pkl)
-models/
-*.pkl
+
