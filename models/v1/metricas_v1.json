@@ -1,17 +1,17 @@
 {
-  "nome_projeto": "Spotify DataView - Modelos Preditivos",
-  "data_execucao": "13/07/2026",
-  "versao_pipeline": "v1",
-  "abordagem_1_popularidade": {
-    "algoritmo": "Random Forest Regressor",
-    "MAE_treino": 12.36,
-    "MAE_teste": 13.0,
-    "RMSE_teste": 16.11,
-    "R2_teste": 0.1746
-  },
-  "abordagem_2_dancabilidade": {
-    "algoritmo": "Random Forest Regressor",
-    "MAE_teste": 0.09,
-    "R2_teste": 0.5603
-  }
+    "nome_projeto": "Spotify DataView - Modelos Preditivos",
+    "data_execucao": "13/07/2026",
+    "versao_pipeline": "v1",
+    "abordagem_1_popularidade": {
+        "algoritmo": "Random Forest Regressor",
+        "MAE_treino": 12.36,
+        "MAE_teste": 13.0,
+        "RMSE_teste": 16.11,
+        "R2_teste": 0.1746
+    },
+    "abordagem_2_dancabilidade": {
+        "algoritmo": "Random Forest Regressor",
+        "MAE_teste": 0.09,
+        "R2_teste": 0.5603
+    }
 }
