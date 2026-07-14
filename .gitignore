@@ -24,5 +24,7 @@ data/raw/*.csv
 data/processed/*.csv
 data/final/*.csv
 
-
+# Ignorar ficheiros de modelos pesados
+*.pkl
+models/
 

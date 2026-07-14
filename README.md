@@ -14,7 +14,6 @@ O grande diferencial deste projeto está no seu **Roteiro Analítico**, que comp
 	•	Visualização de Dados: Matplotlib, Seaborn
 
 ---
-
 ## 🧠 O Roteiro Analítico & Descobertas (Storytelling)
 
 O projeto provou que a eficácia de um modelo de Machine Learning depende drasticamente da natureza do alvo (`target`) escolhido, revelando insights profundos sobre o mercado da música:
@@ -38,7 +37,6 @@ Durante a fase exploratória, geramos gráficos que justificaram a limpeza dos d
 ![Matriz de Correlação](outputs/figures/02_correlacao.png)
 
 ---
-
 ### 🕺 Abordagem 2: Previsão de Dançabilidade (Fatores Musicais) - O Pivô do Projeto
 
 - **O Alvo:** `danceability` (escala de 0.0 a 1.0).
@@ -55,7 +53,6 @@ Abaixo está a validação visual do comportamento do modelo, mostrando a relaç
 ![Performance do Modelo de Dançabilidade](outputs/figures/03_performance_danceability.png)
 
 ---
-
 ## 🛠️ Pipeline de Tratamento de Dados (Data Cleaning)
 
 A análise estatística inicial (`.describe()`) revelou distorções severas nos dados brutos. Para garantir a saúde dos modelos, a função `clean_data` (em `src/features.py`) aplicou um pipeline rigoroso que reduziu a base de **114.000 para 75.852 linhas de alta qualidade**:
@@ -66,7 +63,15 @@ A análise estatística inicial (`.describe()`) revelou distorções severas nos
 4. **Filtro de Ruído Comercial:** Exclusão de faixas com popularidade estritamente igual a zero (músicas inativas ou erros de catálogo), elevando o valor mínimo de popularidade para `1.00`.
 
 ---
+## ⚙️ Modificações Recentes no Pipeline
 
+Nas últimas atualizações, o pipeline de Machine Learning foi refinado para garantir a fidelidade matemática e a usabilidade do modelo em produção:
+
+- **Prevenção de Data Leakage (Vazamento de Dados):** Corrigido o vazamento de dados na Abordagem 2 (Dançabilidade), garantindo que a própria variável alvo (`danceability`) fosse devidamente removida da matriz de características ($X$) antes do treinamento.
+- **Normalização Isolada por Abordagem:** Cada modelo (Popularidade e Dançabilidade) passou a utilizar seu próprio pipeline de escala (`StandardScaler`), impedindo o cruzamento indevido de características e inconsistências dimensionais (`ValueError` de formatos de matrizes).
+- **Modelo Final de Produção (Train on Full Dataset):** Implementada a etapa final de engenharia onde, após a validação honesta (treino/teste 80/20) e geração de métricas de avaliação para o relatório, o modelo definitivo é re-treinado utilizando **100% dos dados disponíveis**. Isso maximiza o aprendizado do algoritmo antes de ser persistido em disco na pasta `models/v1/` como `modelo_dance_final.pkl`.
+
+---
 ## 📂 Estrutura do Repositório
 
 ```text
@@ -100,3 +105,22 @@ data/raw/spotify-tracks-dataset.csv
 Abra o VS Code ou o seu ambiente Jupyter e execute o ficheiro:
 notebooks/spotify_dataview.ipynb
 ```
+---
+## 🔮 Melhorias Futuras
+
+
+### 1. Teste de Modelos de Regressão Alternativos
+Experimentar algoritmos com premissas matemáticas diferentes pode reduzir o erro do modelo ($MAE$ e $RMSE$) ou melhorar o poder explicativo ($R^2$):
+
+* **XGBoost / LightGBM (Gradient Boosting):** Algoritmos baseados em árvores de decisão que treinam de forma sequencial (onde cada árvore corrige os erros da anterior). Costumam superar o Random Forest em performance e lidam extremamente bem com relações não-lineares complexas nos metadados de áudio do Spotify.
+* **Regressão Ridge ou Lasso (Linear Regularizada):** Excelente alternativa caso queiramos um modelo altamente interpretável. A regularização Lasso (L1) ajudaria a zerar coeficientes de variáveis irrelevantes, agindo como um seletor de atributos automático.
+* **Support Vector Regressor (SVR):** Utilizando um Kernel não-linear (como RBF), o SVR pode mapear as características de áudio para um espaço de maior dimensão, facilitando a previsão da dançabilidade e da popularidade em cenários onde a fronteira de decisão é complexa.
+
+### 2. Engenharia de Recursos Avançada (Feature Engineering)
+- **Extração de novas métricas:** Cruzar variáveis existentes para criar novos indicadores (ex: a razão entre energia e valência para medir "euforia musical").
+- **Agrupamento por gênero:** Treinar modelos especialistas para gêneros musicais específicos (ex: um modelo para Rock, outro para Pop), uma vez que a importância das variáveis de áudio muda drasticamente dependendo do estilo de música.
+
+### 3. Otimização de Hiperparâmetros (Hyperparameter Tuning)
+- Implementar busca exaustiva via `GridSearchCV` ou uma busca otimizada via `RandomizedSearchCV` para encontrar os melhores parâmetros do Random Forest (como `n_estimators`, `max_depth` e `min_samples_split`), polindo ainda mais as métricas de validação.
+
+---
