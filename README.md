@@ -70,7 +70,18 @@ Nas últimas atualizações, o pipeline de Machine Learning foi refinado para ga
 - **Prevenção de Data Leakage (Vazamento de Dados):** Corrigido o vazamento de dados na Abordagem 2 (Dançabilidade), garantindo que a própria variável alvo (`danceability`) fosse devidamente removida da matriz de características ($X$) antes do treinamento.
 - **Normalização Isolada por Abordagem:** Cada modelo (Popularidade e Dançabilidade) passou a utilizar seu próprio pipeline de escala (`StandardScaler`), impedindo o cruzamento indevido de características e inconsistências dimensionais (`ValueError` de formatos de matrizes).
 - **Modelo Final de Produção (Train on Full Dataset):** Implementada a etapa final de engenharia onde, após a validação honesta (treino/teste 80/20) e geração de métricas de avaliação para o relatório, o modelo definitivo é re-treinado utilizando **100% dos dados disponíveis**. Isso maximiza o aprendizado do algoritmo antes de ser persistido em disco na pasta `models/v1/` como `modelo_dance_final.pkl`.
+---
+## 💾 Modelos Treinados e Desempenho
 
+Devido ao limite de tamanho de arquivos do GitHub (100 MB), os modelos finais de produção de 600 MB não estão salvos diretamente neste repositório. 
+
+Embora o notebook esteja configurado para **gerar e treinar esses modelos automaticamente** durante a execução, esse processo de treinamento pode demorar um pouco, dependendo do seu hardware. 
+
+Para evitar esse tempo de espera e executar o projeto de forma imediata, recomendamos que você baixe os arquivos já prontos:
+
+* [📥 Baixar Modelos Treinados (Google Drive)](https://drive.google.com/drive/folders/1SMGpCD8lduXBkbjCPTVpM9atBHX9jSnc?usp=sharing)
+
+> 💡 **Nota:** Após o download, basta colocar os arquivos `.pkl` dentro da pasta `models/v1/` para que o projeto os carregue instantaneamente.
 ---
 ## 📂 Estrutura do Repositório
 
@@ -106,6 +117,7 @@ Abra o VS Code ou o seu ambiente Jupyter e execute o ficheiro:
 notebooks/spotify_dataview.ipynb
 ```
 ---
+
 ## 🔮 Melhorias Futuras
 
 
