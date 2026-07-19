@@ -1,5 +1,9 @@
 # 🎵 Spotify DataView: Análise Preditiva de Popularidade vs. Dançabilidade
 
+[ 📹 Link para o video](https://www.loom.com/share/6fb8c83a0cf64663ace864d8ecc4572b)
+---
+[ 📹 Link alternativo](https://drive.google.com/file/d/1iyimHw605eXgYIfxZnt8SR4zq35g6kLq/view?usp=sharing)
+---
 ## 📌 Sobre o Projeto
 
 Este é um projeto completo de Ciência de Dados que explora o dataset de faixas musicais do Spotify. A arquitetura foi desenvolvida utilizando boas práticas de engenharia de software para projetos de dados, separando a lógica de negócio em scripts modulares (`src/`) e a exploração visual em Jupyter Notebooks.
